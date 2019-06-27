@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.2-b608 (trunk-7979; 2015-01-21T12:50:19+0000) JAXWS-RI/2.2.11-b150120.1832 JAXWS-API/2.2.12 JAXB-RI/2.2.12-b141219.1637 JAXB-API/2.2.13-b141020.1521 svn-revision#unknown. --><xs:schema xmlns:tns="http://ws/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://ws/">
+
+<xs:element name="SQLException" type="tns:SQLException"/>
+
+<xs:element name="getCotizacion" type="tns:getCotizacion"/>
+
+<xs:element name="getCotizacionResponse" type="tns:getCotizacionResponse"/>
+
+<xs:element name="setCotizacion" type="tns:setCotizacion"/>
+
+<xs:element name="setCotizacionResponse" type="tns:setCotizacionResponse"/>
+
+<xs:complexType name="setCotizacion">
+<xs:sequence>
+<xs:element name="fecha" type="xs:string" minOccurs="0"/>
+<xs:element name="valor" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="setCotizacionResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="SQLException">
+<xs:sequence>
+<xs:element name="SQLState" type="xs:string" minOccurs="0"/>
+<xs:element name="errorCode" type="xs:int"/>
+<xs:element name="message" type="xs:string" minOccurs="0"/>
+<xs:element name="nextException" type="tns:sqlException" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="sqlException">
+<xs:complexContent>
+<xs:extension base="tns:exception">
+<xs:sequence>
+<xs:element name="nextException" type="tns:sqlException" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="exception">
+<xs:complexContent>
+<xs:extension base="tns:throwable">
+<xs:sequence/>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="throwable">
+<xs:sequence>
+<xs:element name="stackTrace" type="tns:stackTraceElement" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="stackTraceElement" final="extension restriction">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getCotizacion">
+<xs:sequence>
+<xs:element name="fecha" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getCotizacionResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:double" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

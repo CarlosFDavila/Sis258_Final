@@ -1,0 +1,8 @@
+module cotesmodulos{
+    interface cotesinterface{
+        string facturaspendientes(in long numero);
+        void pagar(in long idfactura);
+        //Para ejecutar idlj -fall facturaspendientes.idl
+        //orbd -ORBInitialPort 900
+    };
+};
